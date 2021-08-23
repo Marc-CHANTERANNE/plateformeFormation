@@ -38,10 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $admin;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -151,18 +147,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getAdmin(): ?bool
-    {
-        return $this->admin;
-    }
-
-    public function setAdmin(bool $admin): self
-    {
-        $this->admin = $admin;
-
-        return $this;
     }
 
     public function getName(): ?string
