@@ -64,6 +64,11 @@ h2{
 }
 
 /*************** FORM *****************/
+
+.form-check{
+    text-align: left;
+}
+
 .submit{
     padding: 10px;
     background-color: rgb(0, 132, 255);
