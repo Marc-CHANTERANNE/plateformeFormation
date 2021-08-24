@@ -28,7 +28,7 @@ class Article
     private $creationDate;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="date")
      */
     private $modificationDate;
 
@@ -71,12 +71,12 @@ class Article
         return $this;
     }
 
-    public function getModificationDate(): ?string
+    public function getModificationDate(): ?\DateTimeInterface
     {
         return $this->modificationDate;
     }
 
-    public function setModificationDate(string $modificationDate): self
+    public function setModificationDate(\DateTimeInterface $modificationDate): self
     {
         $this->modificationDate = $modificationDate;
 

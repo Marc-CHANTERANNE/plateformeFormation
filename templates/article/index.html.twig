@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block body %}
+    {% include "nav.html.twig" %}
+
+    {% for article in articles %}
+        {{ article.title }}
+        {{ article.autor }}
+        {{ article.creationDate|date('d-m-Y') }}
+        {{ article.modificationDate|date('d-m-Y') }}
+        <img src="{{ asset('/articlesImg/')}}{{ article.image }}"  alt="">
+    {% endfor %}
+
+    {% include "footer.html.twig" %}
+{% endblock %}
