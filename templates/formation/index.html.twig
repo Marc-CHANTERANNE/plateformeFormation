@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des formations{% endblock %}
+
+{% block body %}
+    {% include "nav.html.twig" %}
+
+    {% for formation in formations %}
+        <img src="{{ asset('/formationsImg/')}}{{ formation.icon }}"  alt="">
+        {{ formation.formationName }}
+        {{ formation.price }}€
+    {% endfor %}
+
+    {% include "footer.html.twig" %}
+{% endblock %}
