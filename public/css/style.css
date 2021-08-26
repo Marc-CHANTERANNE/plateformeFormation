@@ -11,9 +11,21 @@ body{
 }
 
 
+h1{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2{
+    font-size: 20px;
+}
+
+
 /************** NAVBAR ***************/
 nav{
     background-color: rgb(37, 37, 37);
+    margin-bottom: 20px;
 }
 
 nav a{
@@ -37,13 +49,28 @@ nav button{
     transition-property: opacity;
 }
 
-.navbar-nav li:last-of-type>a{
+.navbar-nav li:nth-of-type(4)>a{
     border: white solid 2px;
     border-radius: 5px;
     font-weight: normal;
 }
 
-.navbar-nav li:last-of-type>a:hover{
+.navbar-nav li:nth-of-type(5)>a{
+    border: white solid 2px;
+    border-radius: 5px;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.navbar-nav li:nth-of-type(4)>a:hover{
+    background-color: white;
+    color: rgb(37, 37, 37) !important;
+    opacity: 100%;
+    transition-duration: 0.5s, 0.5s;
+    transition-property: background-color, color;
+}
+
+.navbar-nav li:nth-of-type(5)>a:hover{
     background-color: white;
     color: rgb(37, 37, 37) !important;
     opacity: 100%;
@@ -61,11 +88,13 @@ footer{
     text-align: center;
     background-color: rgb(37, 37, 37);
     color: white;
+    margin-top: 20px;
 }
 
 footer>section a{
     color: white !important;
     border: solid white 1px !important;
+    margin-top: 15px;
     margin-bottom: 15px;
     margin-right: 50px;
 }
@@ -87,15 +116,6 @@ footer>div{
 
 /*************** ACCUEIL ******************/
 
-h1{
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: solid;
-}
-
-h2{
-    font-size: 20px;
-}
 
 /*************** FORM *****************/
 
@@ -115,3 +135,34 @@ h2{
     transition-duration: 0.5s;
     opacity: 80%;
 }
+
+.contact{
+    list-style: none;
+    text-align: center;
+    margin: 20px 0 20px -10px;
+}
+
+.contact i{
+    font-size: 20px;
+}
+
+.contact li{
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.btn-primary{
+    margin-bottom: 10px;
+}
+
+label{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+legend{
+    font-weight: bold;
+    font-size: 18px !important;
+}
+

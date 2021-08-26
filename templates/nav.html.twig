@@ -17,9 +17,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                 </li>
-                <li>
-                    <a class="btn" href="{{ path('inscription') }}">S'inscrire</a>
-                </li>
+                {% if app.user %}
+                    <li>
+                        <a class="btn" href="{{ path('app_login') }}"><i class="fas fa-user"></i>  Votre compte</a>
+                    </li>
+                    <li>
+                        <a class="btn" href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a class="btn" href="{{ path('inscription') }}">S'inscrire</a>
+                    </li>
+                    <li>
+                        <a class="btn" href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

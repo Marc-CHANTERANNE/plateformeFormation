@@ -1,24 +1,34 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}
+    Contactez-nous !
+{% endblock title %}
+
 {% block body %}
     {% include "nav.html.twig" %}
 
-<div class="col-sm-12">
-    <div class="form-group">
-{{ form_start(contactForm) }}
-    {{ form_row(contactForm.nom, {'attr': {'class': 'form-control'}}) }}
-</div>
-<div class="form-group">
-    {{ form_row(contactForm.email, {'attr': {'class': 'form-control'}}) }}
-</div>
-<div class="form-group">
-    {{ form_row(contactForm.message, {'attr': {'class': 'form-control'}}) }}
-</div>
-<div class="form-group">
-    <input type="submit" value="Send" class="btn btn-primary py-3 px-5">
-</div>
-{{ form_end(contactForm) }}
-</div>
-</div>
+    {% form_theme contactForm 'bootstrap_5_layout.html.twig' %}
+
+    <h1>Contactez-nous !</h1>
+
+    <ul class="contact col-lg-12 col-md-12">
+        <li><i class="fas fa-home"></i> FormPlat</li>
+        <li><i class="fas fa-map-marker-alt"></i> 17 rue Proudhon 21000 Dijon</li>
+        <li><i class="fas fa-phone"></i> 07 83 22 19 75</li>
+        <li><i class="fas fa-envelope"></i> marc-chanteranne@outlook.fr</li>
+    </ul>
+
+    <div class="container">
+        <div class="form-group">
+            {{ form_start(contactForm) }}
+                {{ form_row(contactForm.nom, { label: 'Votre nom :' }) }}
+                {{ form_row(contactForm.email, { label: 'Votre mail :' }) }}
+                {{ form_row(contactForm.message, { label: 'Votre message :' }) }}
+                {{ form_row(contactForm.agreeTerms, { label: 'Acceptez nos conditions d\'utilisation' }) }}
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            {{ form_end(contactForm) }}
+        </div>
+    </div>
 
     {% include "footer.html.twig" %}
 {% endblock %}

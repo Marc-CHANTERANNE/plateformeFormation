@@ -8,23 +8,26 @@
 
     {% include ('nav.html.twig') %}
 
+    <h1>Formulaire d'inscription</h1>
+
     <div class="container">
 
-        <h1>Formulaire d'inscription</h1>
 
         {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.name) }}
-            {{ form_row(registrationForm.firstName) }}
-            {{ form_row(registrationForm.gender) }}
-            {{ form_row(registrationForm.birthDate) }}
-            {{ form_row(registrationForm.login) }}
+            {{ form_row(registrationForm.name, { label: 'Votre nom :' }) }}
+            {{ form_row(registrationForm.firstName, { label: 'Votre prénom :' }) }}
+            {{ form_row(registrationForm.gender, { label: 'Votre genre :' }) }}
+            {{ form_row(registrationForm.birthDate, { label: 'Votre date de naissance :' }) }}
+            {{ form_row(registrationForm.login, { label: 'Votre login :' }) }}
             {{ form_row(registrationForm.plainPassword, {
-                label: 'Mot de passe'
+                label: 'Mot de passe :'
             }) }}
-            {{ form_row(registrationForm.agreeTerms) }}
-            <p>Déjà inscrit ? <a href="{{ path('login') }}">Connectez-vous !</a></p>
+            {{ form_row(registrationForm.agreeTerms, { label: 'Vous devez accepter les conditions d\'utilisation' }) }}
+            <p>Déjà inscrit ? <a href="{{ path('app_login') }}">Connectez-vous !</a></p>
             <button type="submit" class="btn btn-primary">S'inscrire</button>
         {{ form_end(registrationForm) }}
     </div>
     
+    {% include ('footer.html.twig') %}
+
 {% endblock %}
