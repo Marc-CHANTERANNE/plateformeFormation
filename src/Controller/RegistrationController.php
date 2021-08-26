@@ -40,4 +40,33 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/modification{id}", name="modification")
+     */
+    public function modify(User $user, Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('index');
+            $this->addFlash('success', 'Vos informations ont bien été mises à jour !');
+            
+        }
+
+        return $this->render('registration/modification.html.twig', [
+            'modificationForm' => $form->createView(),
+        ]);
+    }
 }

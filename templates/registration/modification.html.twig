@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte utilisateur{% endblock %}
+
+{% form_theme modificationForm 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    {% include ('nav.html.twig') %}
+
+    <h1>Modification de vos informations personnelles :</h1>
+
+    <div class="container">
+
+
+        {{ form_start(modificationForm) }}
+            {{ form_row(modificationForm.name, { label: 'Votre nom :' }) }}
+            {{ form_row(modificationForm.firstName, { label: 'Votre prénom :' }) }}
+            {{ form_row(modificationForm.gender, { label: 'Votre genre :' }) }}
+            {{ form_row(modificationForm.birthDate, { label: 'Votre date de naissance :' }) }}
+            {{ form_row(modificationForm.login, { label: 'Votre login :' }) }}
+            {{ form_row(modificationForm.plainPassword, {
+                label: 'Mot de passe :'
+            }) }}
+            {{ form_row(modificationForm.agreeTerms, { label: 'Vous devez accepter les conditions d\'utilisation' }) }}
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        {{ form_end(modificationForm) }}
+    </div>
+    
+    {% include ('footer.html.twig') %}
+
+{% endblock %}
