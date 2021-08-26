@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .container{
     text-align: center;
     border: 1px grey solid;
@@ -12,11 +14,24 @@ nav{
 
 nav a{
     color: white !important;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+nav .container-fluid > a:first-of-type{
+    font-style: italic;
+    font-size: 30px;
 }
 
 nav button{
     color: white !important;
     border-color: white !important;
+}
+
+.navbar-nav a:hover{
+    opacity: 60%;
+    transition-duration: 0.5s;
+    transition-property: opacity;
 }
 
 nav i{
