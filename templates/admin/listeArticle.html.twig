@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block body %}
+    {% include "nav.html.twig" %}
+
+    <h1>Liste des articles</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titre de l'article</th>
+      <th scope="col">Auteur</th>
+      <th scope="col">Contenu</th>
+      <th scope="col">Date de création</th>
+      <th scope="col">Date de modification</th>
+      <th scope="col">Image</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for article in articles %}
+        <tr>
+        <th scope="row">{{ article.id }}</th>
+        <td>{{ article.title }}</td>
+        <td>{{ article.autor }}</td>
+        <td>{{ article.content }}</td>
+        <td>{{ article.creationDate|date('d-m-Y') }}</td>
+        <td>{{ article.modificationDate|date('d-m-Y') }}</td>
+        <td>{{ article.image }}</td>
+        <td><a href="{{ path('modifArticle', { id: article.id }) }}">Modifier</a></td>
+        <td><a href="{{ path('articleDelete', { id: article.id }) }}">Supprimer</a></td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="" class="btn btn-primary">Ajouter un article</a>
+
+    {% include "footer.html.twig" %}
+{% endblock %}

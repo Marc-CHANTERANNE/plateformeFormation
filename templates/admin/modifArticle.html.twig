@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un article{% endblock %}
+
+{% form_theme modifArticleForm 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    {% include ('nav.html.twig') %}
+
+    <h1>Modification d'un article</h1>
+
+    <div class="container">
+
+        {{ form_start(modifArticleForm) }}
+            {{ form_row(modifArticleForm.title, { label: 'Titre de l\'article :' }) }}
+            {{ form_row(modifArticleForm.content, { label: 'Contenu :' }) }}
+            {{ form_row(modifArticleForm.autor, { label: 'Auteur :' }) }}
+            {{ form_row(modifArticleForm.image, { label: 'Image :' }) }}
+            {{ form_row(modifArticleForm.creationDate, { label: 'Date de création :' }) }}
+            {{ form_row(modifArticleForm.modificationDate, { label: 'Date de modification :' }) }}
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        {{ form_end(modifArticleForm) }}
+
+    </div>
+    
+    {% include ('footer.html.twig') %}
+
+{% endblock %}

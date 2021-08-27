@@ -32,6 +32,12 @@
                         <a class="btn" href="{{ path('app_login') }}">Connexion</a>
                     </li>
                 {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a class="btn admin" href="{{ path('admin') }}">Admin</a>
+                    </li>
+                {% endif %}
+                
             </ul>
         </div>
     </div>

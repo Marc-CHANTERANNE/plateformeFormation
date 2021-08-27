@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un formation{% endblock %}
+
+{% form_theme modifFormationForm 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    {% include ('nav.html.twig') %}
+
+    <h1>Modification d'une formation</h1>
+
+    <div class="container">
+
+        {{ form_start(modifFormationForm) }}
+            {{ form_row(modifFormationForm.formationName, { label: 'Titre de la formation :' }) }}
+            {{ form_row(modifFormationForm.price, { label: 'Prix :' }) }}
+            {{ form_row(modifFormationForm.icon, { label: 'Icône :' }) }}
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        {{ form_end(modifFormationForm) }}
+
+    </div>
+    
+    {% include ('footer.html.twig') %}
+
+{% endblock %}

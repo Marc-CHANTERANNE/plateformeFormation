@@ -78,6 +78,11 @@ nav button{
     transition-property: background-color, color;
 }
 
+.admin{
+    color: rgb(54, 160, 54) !important;
+    text-decoration: underline;
+}
+
 nav i{
     font-size: 25px;
 }

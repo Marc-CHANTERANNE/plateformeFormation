@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des formations{% endblock %}
+
+{% block body %}
+    {% include "nav.html.twig" %}
+
+    <h1>Liste des formations</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Icône</th>
+      <th scope="col">Nom de la formation</th>
+      <th scope="col">Prix</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for formation in formations %}
+        <tr>
+        <th scope="row">{{ formation.id }}</th>
+        <td>{{ formation.icon }}</td>
+        <td>{{ formation.formationName }}</td>
+        <td>{{ formation.price }}</td>
+        <td><a href="{{ path('modifFormation', { id: formation.id }) }}">Modifier</a></td>
+        <td><a href="{{ path('formationDelete', { id: formation.id }) }}">Supprimer</a></td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="" class="btn btn-primary">Ajouter une formation</a>
+
+    {% include "footer.html.twig" %}
+{% endblock %}
