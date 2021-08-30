@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'une formation{% endblock %}
+
+{% form_theme ajoutFormationForm 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    {% include ('nav.html.twig') %}
+
+    <h1>Ajout d'une formation</h1>
+
+    <div class="container">
+
+        {{ form_start(ajoutFormationForm) }}
+            {{ form_row(ajoutFormationForm.formationName, { label: 'Titre de la formation :' }) }}
+            {{ form_row(ajoutFormationForm.price, { label: 'Prix :' }) }}
+            {{ form_row(ajoutFormationForm.icon, { label: 'Icône de la formation :' }) }}
+            <button type="submit" class="btn btn-primary">Ajouter la formation</button>
+        {{ form_end(ajoutFormationForm) }}
+        
+    </div>
+    
+    {% include ('footer.html.twig') %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un article{% endblock %}
+
+{% form_theme ajoutArticleForm 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    {% include ('nav.html.twig') %}
+
+    <h1>Ajout d'un article</h1>
+
+    <div class="container">
+
+        {{ form_start(ajoutArticleForm) }}
+            {{ form_row(ajoutArticleForm.title, { label: 'Titre de l\'article :' }) }}
+            {{ form_row(ajoutArticleForm.autor, { label: 'Auteur :' }) }}
+            {{ form_row(ajoutArticleForm.content, { label: 'Contenu de l\'article :' }) }}
+            {{ form_row(ajoutArticleForm.creationDate, { label: 'Date de création :' }) }}
+            {{ form_row(ajoutArticleForm.modificationDate, { label: 'Date de modification :' }) }}
+            {{ form_row(ajoutArticleForm.image, {label: 'Image :'}) }}
+            <button type="submit" class="btn btn-primary">Ajouter l'article</button>
+        {{ form_end(ajoutArticleForm) }}
+        
+    </div>
+    
+    {% include ('footer.html.twig') %}
+
+{% endblock %}

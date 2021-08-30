@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ArticleFormType extends AbstractType
 {
@@ -17,11 +17,17 @@ class ArticleFormType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('creationDate', DateTimeType::class, [
-                'disabled' => 'true',
+            ->add('creationDate', DateType::class, [
+                'widget' => 'choice',
+                'days' => range(1,31),
+                'format' => 'dd-MM-yyyy',
+                'years' => range(1920, 2021)
             ])
-            ->add('modificationDate', DateTimeType::class, [
-                'disabled' => 'true',
+            ->add('modificationDate', DateType::class, [
+                'widget' => 'choice',
+                'days' => range(1,31),
+                'format' => 'dd-MM-yyyy',
+                'years' => range(1920, 2021)
             ])
             ->add('autor')
             ->add('image', FileType::class, [

@@ -4,9 +4,21 @@
 
 {% block body %}
     {% include "nav.html.twig" %}
-    
-    <a href="{{ path('listeArticle') }}">Liste des articles</a>
-    <a href="{{ path('listeFormation') }}">Liste des formations</a>
+
+    <h1>Espace administrateur</h1>
+
+    <div class="container">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td><a href="{{ path('listeArticle') }}" class="btn btn-primary">Liste des articles</a></td>
+                </tr>
+                <tr>
+                    <td><a href="{{ path('listeFormation') }}" class="btn btn-primary">Liste des formations</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     {% include "footer.html.twig" %}
 {% endblock %}

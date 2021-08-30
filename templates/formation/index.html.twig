@@ -5,11 +5,14 @@
 {% block body %}
     {% include "nav.html.twig" %}
 
+    <h1>Formations</h1>
+
 <ul class="list-group">
     {% for formation in formations %}
         <li class="list-group-item d-flex justify-content-between align-items-center listeFormation">
             <img src="{{ asset('/formationsImg/')}}{{ formation.icon }}"  alt="">{{ formation.formationName }}
             <span class="badge bg-primary rounded-pill">{{ formation.price }}€</span>
+            <span class="btn btn-primary">Accéder</span>
         </li>
     {% endfor %}
 

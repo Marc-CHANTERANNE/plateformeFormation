@@ -151,4 +151,86 @@ class AdminController extends AbstractController
             'modifFormationForm' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/admin/listeArticle/ajoutArticle", name="ajoutArticle")
+     */
+    public function addArticle(Request $request, SluggerInterface $slugger): Response
+    {
+        $article = new Article();
+        $form = $this->createForm(ArticleFormType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageArticle = $form->get('image')->getData();
+            if ($imageArticle) {
+                $originalFileName = pathinfo($imageArticle->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($originalFileName);
+                $newFileName = $safeFileName.'-'.uniqid().'.'.$imageArticle->guessExtension();
+
+                try {
+                    $imageArticle->move(
+                        $this->getParameter('articles_directory'),
+                        $newFileName
+                    );
+                } catch (FileException $e) {
+                    
+                }
+
+                $article->setImage($newFileName);
+            }
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('listeArticle');
+        }
+
+        return $this->render('admin/ajoutArticle.html.twig', [
+            'ajoutArticleForm' => $form->createView(),
+        ]);
+    }
+
+     /**
+     * @Route("/admin/listeFormation/ajoutFormation", name="ajoutFormation")
+     */
+    public function addFormation(Request $request, SluggerInterface $slugger): Response
+    {
+        $formation = new Formation();
+        $form = $this->createForm(FormationFormType::class, $formation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFormation = $form->get('icon')->getData();
+            if ($imageFormation) {
+                $originalFileName = pathinfo($imageFormation->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($originalFileName);
+                $newFileName = $safeFileName.'-'.uniqid().'.'.$imageFormation->guessExtension();
+
+                try {
+                    $imageFormation->move(
+                        $this->getParameter('formations_directory'),
+                        $newFileName
+                    );
+                } catch (FileException $e) {
+                    
+                }
+
+                $formation->setIcon($newFileName);
+            }
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($formation);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('listeFormation');
+        }
+
+        return $this->render('admin/ajoutFormation.html.twig', [
+            'ajoutFormationForm' => $form->createView(),
+        ]);
+    }
 }
